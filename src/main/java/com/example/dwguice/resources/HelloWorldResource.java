@@ -1,8 +1,8 @@
-package no.buypass.dwguice.resources;
+package com.example.dwguice.resources;
 
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.base.Optional;
-import no.buypass.dwguice.api.Saying;
+import com.example.dwguice.api.Saying;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

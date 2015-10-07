@@ -1,4 +1,4 @@
-package no.buypass.dwguice;
+package com.example.dwguice;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;

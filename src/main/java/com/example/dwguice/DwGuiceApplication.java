@@ -1,11 +1,11 @@
-package no.buypass.dwguice;
+package com.example.dwguice;
 
 import com.hubspot.dropwizard.guice.GuiceBundle;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import no.buypass.dwguice.modules.HelloWorldModule;
-import no.buypass.dwguice.resources.HelloWorldResource;
+import com.example.dwguice.modules.HelloWorldModule;
+import com.example.dwguice.resources.HelloWorldResource;
 
 public class DwGuiceApplication extends Application<DwGuiceConfiguration> {
 

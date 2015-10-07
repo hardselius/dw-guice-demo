@@ -1,4 +1,4 @@
-package no.buypass.dwguice.health;
+package com.example.dwguice.health;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.google.inject.Inject;

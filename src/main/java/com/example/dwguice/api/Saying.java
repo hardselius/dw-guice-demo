@@ -1,4 +1,4 @@
-package no.buypass.dwguice.api;
+package com.example.dwguice.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;

@@ -1,11 +1,12 @@
 package com.example.dwguice.resources;
 
 import com.codahale.metrics.annotation.Timed;
-import com.google.common.base.Optional;
-import com.google.inject.name.Named;
 import com.example.dwguice.api.Saying;
+import com.example.dwguice.modules.Template;
+import com.google.common.base.Optional;
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -23,7 +24,7 @@ public class HelloWorldGuiceResource {
     private final AtomicLong counter;
 
     @Inject
-    HelloWorldGuiceResource(@Named("template") String template,
+    HelloWorldGuiceResource(@Template String template,
                             @Named("defaultName") String defaultName) {
         this.template = template;
         this.defaultName = defaultName;

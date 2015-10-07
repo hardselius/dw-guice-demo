@@ -8,11 +8,10 @@ import com.example.dwguice.DwGuiceConfiguration;
 public class HelloWorldModule extends AbstractModule {
     @Override
     protected void configure() {
-
     }
 
     @Provides
-    @Named("template")
+    @Template
     public String provideTemplate(DwGuiceConfiguration configuration) {
         return configuration.getTemplate();
     }

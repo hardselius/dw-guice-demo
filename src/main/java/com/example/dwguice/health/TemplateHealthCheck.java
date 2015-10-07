@@ -1,15 +1,15 @@
 package com.example.dwguice.health;
 
 import com.codahale.metrics.health.HealthCheck;
+import com.example.dwguice.modules.Template;
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
 import com.hubspot.dropwizard.guice.InjectableHealthCheck;
 
 public class TemplateHealthCheck extends InjectableHealthCheck {
     private final String template;
 
     @Inject
-    TemplateHealthCheck(@Named("template") String template) {
+    TemplateHealthCheck(@Template String template) {
         this.template = template;
     }
 

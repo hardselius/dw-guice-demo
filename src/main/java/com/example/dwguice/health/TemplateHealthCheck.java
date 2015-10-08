@@ -5,11 +5,11 @@ import com.example.dwguice.modules.Template;
 import com.google.inject.Inject;
 import com.hubspot.dropwizard.guice.InjectableHealthCheck;
 
-public class TemplateHealthCheck extends InjectableHealthCheck {
+public class TemplateHealthCheck extends HealthCheck {
     private final String template;
 
     @Inject
-    TemplateHealthCheck(@Template String template) {
+    public TemplateHealthCheck(@Template String template) {
         this.template = template;
     }
 
@@ -20,10 +20,5 @@ public class TemplateHealthCheck extends InjectableHealthCheck {
             return Result.unhealthy("template doesn't include a name");
         }
         return HealthCheck.Result.healthy();
-    }
-
-    @Override
-    public String getName() {
-        return "template";
     }
 }

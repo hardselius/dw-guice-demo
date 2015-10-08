@@ -1,11 +1,10 @@
 package com.example.dwguice;
 
-import com.hubspot.dropwizard.guice.GuiceBundle;
+import com.example.dwguice.health.TemplateHealthCheck;
+import com.example.dwguice.resources.HelloWorldResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import com.example.dwguice.modules.HelloWorldModule;
-import com.example.dwguice.resources.HelloWorldResource;
 
 public class DwGuiceApplication extends Application<DwGuiceConfiguration> {
 
@@ -20,13 +19,6 @@ public class DwGuiceApplication extends Application<DwGuiceConfiguration> {
 
     @Override
     public void initialize(Bootstrap<DwGuiceConfiguration> bootstrap) {
-        GuiceBundle<DwGuiceConfiguration> guiceBundle = GuiceBundle.<DwGuiceConfiguration>newBuilder()
-                .addModule(new HelloWorldModule())
-                .enableAutoConfig(getClass().getPackage().getName())
-                .setConfigClass(DwGuiceConfiguration.class)
-                .build();
-
-        bootstrap.addBundle(guiceBundle);
     }
 
     @Override
@@ -36,8 +28,9 @@ public class DwGuiceApplication extends Application<DwGuiceConfiguration> {
                 configuration.getDefaultName()
         );
         environment.jersey().register(resource);
-//        final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
-//        environment.healthChecks().register("template", healthCheck);
+
+        final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
+        environment.healthChecks().register("template", healthCheck);
     }
 
 }

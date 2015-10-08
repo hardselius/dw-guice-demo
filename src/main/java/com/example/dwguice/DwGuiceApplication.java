@@ -1,5 +1,6 @@
 package com.example.dwguice;
 
+import com.example.dwguice.health.TemplateHealthCheck;
 import com.hubspot.dropwizard.guice.GuiceBundle;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -36,8 +37,9 @@ public class DwGuiceApplication extends Application<DwGuiceConfiguration> {
                 configuration.getDefaultName()
         );
         environment.jersey().register(resource);
-//        final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
-//        environment.healthChecks().register("template", healthCheck);
+
+        final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
+        environment.healthChecks().register("template", healthCheck);
     }
 
 }

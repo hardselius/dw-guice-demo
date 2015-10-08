@@ -1,12 +1,10 @@
 package com.example.dwguice;
 
-import com.example.dwguice.health.TemplateHealthCheck;
+import com.example.dwguice.modules.HelloWorldModule;
 import com.hubspot.dropwizard.guice.GuiceBundle;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import com.example.dwguice.modules.HelloWorldModule;
-import com.example.dwguice.resources.HelloWorldResource;
 
 public class DwGuiceApplication extends Application<DwGuiceConfiguration> {
 
@@ -26,20 +24,13 @@ public class DwGuiceApplication extends Application<DwGuiceConfiguration> {
                 .enableAutoConfig(getClass().getPackage().getName())
                 .setConfigClass(DwGuiceConfiguration.class)
                 .build();
-
         bootstrap.addBundle(guiceBundle);
     }
 
     @Override
     public void run(DwGuiceConfiguration configuration, Environment environment) {
-        final HelloWorldResource resource = new HelloWorldResource(
-                configuration.getTemplate(),
-                configuration.getDefaultName()
-        );
-        environment.jersey().register(resource);
-
-        final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
-        environment.healthChecks().register("template", healthCheck);
+        // now you don't need to add resources, tasks, health checks or providers
+        // you must have your health checks inherit from InjectableHealthCheck in order for them to be injected
     }
 
 }

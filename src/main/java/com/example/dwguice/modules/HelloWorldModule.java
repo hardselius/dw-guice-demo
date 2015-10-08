@@ -9,16 +9,4 @@ public class HelloWorldModule extends AbstractModule {
     @Override
     protected void configure() {
     }
-
-    @Provides
-    @Template
-    public String provideTemplate(DwGuiceConfiguration configuration) {
-        return configuration.getTemplate();
-    }
-
-    @Provides
-    @Named("defaultName")
-    public String provideDefaultName(DwGuiceConfiguration configuration) {
-        return configuration.getDefaultName();
-    }
 }
